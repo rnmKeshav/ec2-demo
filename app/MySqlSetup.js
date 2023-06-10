@@ -16,7 +16,7 @@ const createDbConnection = () => {
   db.connect((err, data) => {
     if (err) {
       console.log("Connection to database failed");
-      throw err;
+      throw new Error(err);
     }
 
     console.log("Database connection success");

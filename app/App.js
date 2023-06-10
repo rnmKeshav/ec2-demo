@@ -7,9 +7,21 @@ const bodyParser = require("body-parser");
 const app = express();
 app.use(bodyParser.json())
 
+let dist = {};
+
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  // console.log("The request has come to ", process.pid);
+  if (dist[process.pid]) {
+    dist[process.pid] = dist[process.pid] + 1;
+  } else {
+    dist[process.pid] = 1;
+  }
+  res.send(`Hello World. Application is running on ${process.pid}`);
 });
+
+setTimeout(() => {
+  console.log("dist", dist);
+}, 50000)
 
 app.post("/user", (req, res) => {
   let user = req.body;

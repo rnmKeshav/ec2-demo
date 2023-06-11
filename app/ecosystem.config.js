@@ -19,6 +19,14 @@ module.exports = {
       repo : "git@github.com:rnmKeshav/ec2-demo.git",
       path : "/var/www/my-application",
       "post-deploy" : "npm install && pm2 reload ecosystem.config.js --env production"
+    },
+    dev: {
+      user : "node",
+      host : "http://localhost:3000/",
+      ref  : "origin/main",
+      repo : "git@github.com:rnmKeshav/ec2-demo.git",
+      path : "/Users/keshavkumar/Documents/practices/ec2-demo/app",
+      "post-deploy" : "npm install && pm2 reload ecosystem.config.js"
     }
   }
 }
